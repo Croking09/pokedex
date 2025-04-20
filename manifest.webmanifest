@@ -1,0 +1,1 @@
+{"name":"PokeDex","short_name":"PokeDex","start_url":".","display":"standalone","background_color":"#ffffff","theme_color":"#ffcb05","lang":"en","scope":"/pokedex/","icons":[{"src":"../icons/icon-192.png","sizes":"192x192","type":"image/png"},{"src":"../icons/icon-512.png","sizes":"512x512","type":"image/png"}]}
