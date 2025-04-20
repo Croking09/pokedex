@@ -7,6 +7,24 @@ export default defineConfig({
   plugins: [react(),
     VitePWA({
       registerType: 'autoUpdate',
+      workbox: {
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/pokeapi\.co\/api\/v2\/pokemon/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'pokeapi-cache',
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 7 * 24 * 60 * 60 // 7 días
+              },
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
+            }
+          }
+        ]
+      },
       manifest: {
         name: 'PokeDex',
         short_name: 'PokeDex',
