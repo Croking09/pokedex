@@ -28,16 +28,20 @@ const PokemonList = () => {
     }, []);
 
     return (
-        <div className="container my-4">
+        <div className="container my-1">
+            <div className="d-flex justify-content-center gap-3 mb-1">
+                <button className="btn btn-primary" onClick={() => previous && getData(previous)} disabled={!previous}>Back</button>
+                <button className="btn btn-primary" onClick={() => next && getData(next)} disabled={!next}>Next</button>
+            </div>
             {error && <p className="text-danger">No se han podido cargar los datos</p>}
-            <div className="row">
+            <div className="row g-1">
                 {pokemon.map(p => (
-                    <div key={p.name} className="col-md-4 mb-4">
+                    <div key={p.name} className="col-4 my-1">
                         <PokemonCard pokemonUrl={p.url} />
                     </div>
                 ))}
             </div>
-            <div className="d-flex justify-content-between">
+            <div className="d-flex justify-content-center gap-3">
                 <button className="btn btn-primary" onClick={() => previous && getData(previous)} disabled={!previous}>Back</button>
                 <button className="btn btn-primary" onClick={() => next && getData(next)} disabled={!next}>Next</button>
             </div>

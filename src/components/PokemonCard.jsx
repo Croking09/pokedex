@@ -15,8 +15,9 @@ const PokemonCard = ({ pokemonUrl }) => {
     return (
         <div className="card text-center">
             <div className="card-body">
-                <h5 className="card-title">#{details.id} {details.name}</h5>
+                <h5 className="card-title">#{details.id}</h5>
                 <img src={details.sprites.front_default} alt={details.name} className="img-fluid" />
+                <p className="card-text text-capitalize">{details.name}</p>
             </div>
         </div>
     );
