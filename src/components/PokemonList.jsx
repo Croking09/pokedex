@@ -5,12 +5,19 @@ const PokemonList = () => {
     const [previous, setPrevious] = useState(null);
     const [next, setNext] = useState(null);
     const [pokemon, setPokemon] = useState([]);
+    const [error, setError] = useState(null);
 
     const getData = (url) => {
-        fetchPokemon(url).then(data => {
+        setError(null);
+        fetchPokemon(url)
+        .then(data => {
             setPokemon(data.results);
             setPrevious(data.previous);
             setNext(data.next);
+        })
+        .catch(err => {
+            setPokemon([]);
+            setError(err);
         });
     }
 
@@ -20,6 +27,7 @@ const PokemonList = () => {
 
     return (
         <div>
+            {error && <p style={{ color: 'red' }}>No se han podido cargar los datos</p>}
             <ul>
                 {pokemon.map(p => (
                 <li key={p.name}>{p.name}</li>

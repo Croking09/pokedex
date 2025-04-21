@@ -1,7 +1,11 @@
 const fetchPokemon = async (url) => {
     const response = await fetch(url);
-    const data = await response.json();
-    return data;
+
+    if (!response.ok) {
+        throw new Error('Network error or resource not in cache');
+    }
+
+    return await response.json();
 };
 
 export default fetchPokemon;
