@@ -13,10 +13,11 @@ const PokemonCard = ({ pokemonUrl }) => {
     if (!details) return null;
 
     return (
-        <div>
-            <p>#{details.id}</p>
-            <img src={details.sprites.front_default} alt={`Sprite de ${details.name}`} />
-            <p>{details.name}</p>
+        <div className="card text-center">
+            <div className="card-body">
+                <h5 className="card-title">#{details.id} {details.name}</h5>
+                <img src={details.sprites.front_default} alt={details.name} className="img-fluid" />
+            </div>
         </div>
     );
 };

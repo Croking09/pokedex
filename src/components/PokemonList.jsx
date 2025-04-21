@@ -24,20 +24,22 @@ const PokemonList = () => {
     }
 
     useEffect(() => {
-        getData('https://pokeapi.co/api/v2/pokemon');
+        getData('https://pokeapi.co/api/v2/pokemon?limit=21');
     }, []);
 
     return (
-        <div>
-            {error && <p style={{ color: 'red' }}>No se han podido cargar los datos</p>}
-            <ul>
+        <div className="container my-4">
+            {error && <p className="text-danger">No se han podido cargar los datos</p>}
+            <div className="row">
                 {pokemon.map(p => (
-                <PokemonCard key={p.name} pokemonUrl={p.url} />
+                    <div key={p.name} className="col-md-4 mb-4">
+                        <PokemonCard pokemonUrl={p.url} />
+                    </div>
                 ))}
-            </ul>
-            <div>
-                <button onClick={() => previous && getData(previous)} disabled={!previous}>Back</button>
-                <button onClick={() => next && getData(next)} disabled={!next}>Next</button>
+            </div>
+            <div className="d-flex justify-content-between">
+                <button className="btn btn-primary" onClick={() => previous && getData(previous)} disabled={!previous}>Back</button>
+                <button className="btn btn-primary" onClick={() => next && getData(next)} disabled={!next}>Next</button>
             </div>
         </div>
     );
