@@ -22,6 +22,20 @@ export default defineConfig({
                 statuses: [0, 200]
               }
             }
+          },
+          {
+            urlPattern: /^https:\/\/raw\.githubusercontent\.com\/PokeAPI\/sprites\/master\/sprites\/pokemon\/\d+\.png/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'pokemon-sprites-cache',
+              expiration: {
+                maxEntries: 10 * 21, // 10 paginas de 21 pokemon
+                maxAgeSeconds: 7 * 24 * 60 * 60 // 7 días
+              },
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
+            }
           }
         ]
       },
@@ -47,5 +61,5 @@ export default defineConfig({
       }
     })
   ],
-  base: '/pokedex/'
+  base: '/'
 })
