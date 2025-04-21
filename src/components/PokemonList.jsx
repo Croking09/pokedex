@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import fetchPokemon from '../services/pokeapi';
 
+import PokemonCard from './PokemonCard.jsx';
+
 const PokemonList = () => {
     const [previous, setPrevious] = useState(null);
     const [next, setNext] = useState(null);
@@ -30,7 +32,7 @@ const PokemonList = () => {
             {error && <p style={{ color: 'red' }}>No se han podido cargar los datos</p>}
             <ul>
                 {pokemon.map(p => (
-                <li key={p.name}>{p.name}</li>
+                <PokemonCard key={p.name} pokemonUrl={p.url} />
                 ))}
             </ul>
             <div>

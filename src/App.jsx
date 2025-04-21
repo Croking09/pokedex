@@ -1,9 +1,10 @@
 import PokemonList from './components/PokemonList.jsx';
+import Header from './components/Header.jsx';
 
 function App() {
   return (
     <div>
-      <h1>Pokédex</h1>
+      <Header />
       <PokemonList />
     </div>
   )
