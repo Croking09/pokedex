@@ -39,6 +39,13 @@ export default defineConfig({
           }
         ]
       },
+      devOptions: {
+        enabled: true,
+        type: 'module',
+        navigateFallback: 'index.html',
+        manifestFilename: 'manifest.json',
+        scope: '/pokedex/',
+      },
       manifest: {
         name: 'PokeDex',
         short_name: 'PokeDex',
